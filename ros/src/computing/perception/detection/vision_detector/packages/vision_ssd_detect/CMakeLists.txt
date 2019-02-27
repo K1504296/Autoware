@@ -41,7 +41,7 @@ catkin_package(
 ## Build ##
 ###########
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-DCPU_ONLY -std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
 
 include_directories(
         ${catkin_INCLUDE_DIRS}
@@ -70,9 +70,6 @@ if (EXISTS "${SSD_CAFFE_PATH}")
     target_link_libraries(vision_ssd_detect
             ${catkin_LIBRARIES}
             ${OpenCV_LIBRARIES}
-            ${CUDA_LIBRARIES}
-            ${CUDA_CUBLAS_LIBRARIES}
-            ${CUDA_curand_LIBRARY}
             ${SSD_CAFFE_PATH}/lib/libcaffe.so
             glog
             )
